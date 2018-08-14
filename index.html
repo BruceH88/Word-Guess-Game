@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Word Guess Game</title>
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+  <!-- Container -->
+  <div class="Container">
+    <div class="row">
+      <!-- Instructions and new game button -->
+      <div class="col-6">
+        <h2>Instructions</h2>
+        <hr>
+        <p>
+          Press a key to guess a letter in the current word.
+          <br> If the letter is in the word, it will be displayed in the appropriate locations.
+          <br> If it is not in the word, you will lose a guess.
+          <br> If you guess the work when you still have guesses left, you win.
+          <br> If the number guesses left reaches zero you lose.
+        </p>
+      </div>
+      <!-- Game screen -->
+      <div class="col-6">
+        <!-- Game title -->
+        <h1>Word Guess Game</h1>
+        <!-- show score titles -->
+        <div class="row">
+          <div class="col-4">
+            <h5>Wins</h5>
+          </div>
+          <div class="col-4">
+            <h5>Losses</h5>
+          </div>
+          <div class="col-4">
+            <h5>Guesses Left</h5>
+          </div>
+        </div>
+        <!-- show score titles -->
+        <div class="row">
+          <div class="col-4">
+            <h5>
+              <div id="winsCnt">0</div>
+            </h5>
+          </div>
+          <div class="col-4">
+            <h5 id="loseCnt">0</h5>
+          </div>
+          <div class="col-4">
+            <h5 id="guessCnt">0</h5>
+          </div>
+        </div>
+        <!-- current word title -->
+        <h3>Currect Word</h3>
+        <!-- current word title -->
+        <div class="row">
+          <h3 id="wordProgress"></h3>
+        </div>
+        <h3>Letters Already Guessed</h3>
+        <div class="row">
+          <h3 id="lettersGuessed"></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // Initial game setup
+    //   call new game function
+    newGame();
+    //   call function to update game data
+    updateGameScreen();
+  </script>
+
+</body>
+
+</html>
