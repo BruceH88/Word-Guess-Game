@@ -1,0 +1,19 @@
+body {
+  background: powderblue url("../images/fruit.png") repeat;
+}
+
+h2 {
+  color: blueviolet;
+}
+
+.instructionDisplay{
+  background-color: wheat;
+}
+
+.gameDisplay{
+  background-color: powderblue;
+}
+
+.lettersGuessedField {
+  min-height: 30px;
+}

@@ -6,6 +6,7 @@ var intWins = 0;
 var intLoses = 0;
 var intGuessLeft = 0;
 var arrGuessedLetters = [];
+var strGameMsg ="";
 
 // new game function
 function newGame() {
@@ -44,7 +45,9 @@ function updateGameScreen() {
   }
   document.getElementById("wordProgress").innerHTML = temp;
   //   update letters guessed
-  document.getElementById("lettersGuessed").innerHTML = arrGuessedLetters.toString();
+  document.getElementById("lettersGuessed").innerHTML = arrGuessedLetters.toString().toUpperCase().replace(/\,/g," ");
+  //   update game message
+  document.getElementById("gameMessage").innerHTML = strGameMsg;
 }
 
 function updateWordProgress(strCurrentWord, arrWordProgress, keyPress) {
@@ -67,7 +70,7 @@ document.onkeyup = function () {
   var keyPressed = event.key.toLowerCase();
   //   validate pressed key is a letter
   if (event.keyCode >= 65 && event.keyCode <= 90) {
-    console.log(keyPressed);
+    strGameMsg = "";
     // check if the letter is has been already pressed
     if (!arrGuessedLetters.includes(keyPressed)) {
       //   check if in word
@@ -81,17 +84,21 @@ document.onkeyup = function () {
       }
       // if guesses left equals zero lose game
       if (intGuessLeft <= 0) {
-        alert("You took too many guesses! The word was " + strCurrentWord + ". Try again with a new word.")
+        document.getElementById('loseAudio').play();
+        strGameMsg="You took too many guesses! The word was " + strCurrentWord + ". Try again with a new word.";
         intLoses++;
         newGame()
         // if word complete win game
         // } else if (wordGuessed()) {
       } else if (arrWordProgress.every(isWordGuessed)) {
-        alert("You corretly guess the word was " + strCurrentWord + ". Try again with a new word.")
+        document.getElementById('winAudio').play();
+        strGameMsg="You corretly guess the word was " + strCurrentWord + ". Try again with a new word.";
         intWins++;
         newGame()
       }
     }
+  } else {
+    strGameMsg="Letters are the only valid keys. Please press a letter.";
   }
   // update game screen
   updateGameScreen();
